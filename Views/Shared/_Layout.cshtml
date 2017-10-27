@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - testApp</title>
+    
+    <link rel="stylesheet" href="~/UnityGame/TemplateData/style.css" />
+    <link rel="shortcut icon" href="~/UnityGame/TemplateData/favicon.ico">
+    <script src="~/UnityGame/TemplateData/UnityProgress.js"></script>  
+    <script src="~/UnityGame/Build/UnityLoader.js"></script>
+    <script>
+        var scripts = document.getElementsByTagName("script");
+        var path = scripts[scripts.length-1].src.split('?')[0];
+        var mydir = path.split('/').slice(0,-1).join('/')+'/';
+        console.log(mydir);
+        var gameInstance = UnityLoader.instantiate("gameContainer", "UnityGame/Build/UnityGame.json", {onProgress: UnityProgress});
+    </script>
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+        
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        
+        
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
